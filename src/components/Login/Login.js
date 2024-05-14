@@ -24,7 +24,7 @@ const Login = () => {
           placeholder="Password"
         ></input>
         <br />
-        <button className="bg-red-700 rounded-md text-white font-bold rounded-2xl ml-20 w-56 mt-3 p-4">
+        <button className="bg-red-700 rounded-md text-white font-bold ml-20 w-56 mt-3 p-4">
           {logIn}
         </button>
         <p className="text-white font-bold text-l mb-4 mx-5 text-center mt-4">
