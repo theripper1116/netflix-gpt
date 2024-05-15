@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth } from "../firebase";
 
 export const createUserInFirebase = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)

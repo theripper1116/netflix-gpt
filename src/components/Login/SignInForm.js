@@ -1,10 +1,7 @@
 import React, { useRef, useState } from "react";
 
-import { formValidation } from "../../utils/formValidation";
-import {
-  createUserInFirebase,
-  logInUserInFirebase,
-} from "../../utils/createOrLoginUserInFirebase";
+import { formValidation } from "../../utils/signInOrSignUp/formValidation";
+import { createUserInFirebase, logInUserInFirebase } from "../../utils/signInOrSignUp/createOrLoginUserInFirebase";
 
 const SignInForm = () => {
   const [logIn, setLogIn] = useState(true);
