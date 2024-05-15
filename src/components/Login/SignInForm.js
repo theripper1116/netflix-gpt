@@ -7,8 +7,6 @@ const SignInForm = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-  console.log(email);
-  console.log(password);
   return (
     <form
       className="w-3/12 absolute my-48 mx-auto right-0 left-0 bg-black bg-opacity-80"
@@ -44,9 +42,9 @@ const SignInForm = () => {
         className="bg-red-700 rounded-md text-white font-bold ml-20 w-56 mt-3 p-4"
         onClick={() => {
           const validateChecker = formValidation(
-            name.current.value,
-            email.current.value,
-            password.current.value
+            name.current,
+            email.current,
+            password.current
           );
           if (validateChecker != null) alert(validateChecker);
         }}
@@ -84,8 +82,8 @@ const SignInForm = () => {
         }}
       >
         {logIn
-          ? "Already a user: Sign In now."
-          : "New to Netflix? Sign Up now."}
+          ? "New to Netflix? Sign Up now."
+          : "Already a user: Sign In now."}
       </p>
     </form>
   );
