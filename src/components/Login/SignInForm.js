@@ -1,12 +1,37 @@
 import React, { useRef, useState } from "react";
 
 import { formValidation } from "../../utils/formValidation";
+import {
+  createUserInFirebase,
+  logInUserInFirebase,
+} from "../../utils/createOrLoginUserInFirebase";
 
 const SignInForm = () => {
   const [logIn, setLogIn] = useState(true);
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+
+  const validatorFunc = () => {
+    const validateChecker = formValidation(
+      logIn,
+      name.current,
+      email.current,
+      password.current
+    );
+    if (validateChecker != null) {
+      alert(validateChecker);
+      return;
+    }
+    registerOrLogInUserFunc();
+  };
+
+  const registerOrLogInUserFunc = () => {
+    if (!logIn)
+      createUserInFirebase(email.current.value, password.current.value);
+    else logInUserInFirebase(email.current.value, password.current.value);
+  };
+
   return (
     <form
       className="w-3/12 absolute my-48 mx-auto right-0 left-0 bg-black bg-opacity-80"
@@ -19,20 +44,20 @@ const SignInForm = () => {
       </p>
       {!logIn && (
         <input
-          className="p-4 m-2 ml-20 bg-gray-700 bg-opacity-80"
+          className="p-4 m-2 ml-20 bg-gray-700 bg-opacity-80 text-white"
           type="text"
           placeholder="Enter Name"
           ref={name}
         ></input>
       )}
       <input
-        className="p-4 m-2 ml-20 bg-gray-700 bg-opacity-80"
+        className="p-4 m-2 ml-20 bg-gray-700 bg-opacity-80 text-white"
         type="text"
         placeholder="Email or mobile number"
         ref={email}
       ></input>
       <input
-        className="p-4 m-2 ml-20 bg-gray-700 bg-opacity-80"
+        className="p-4 m-2 ml-20 bg-gray-700 bg-opacity-80 text-white"
         type="password"
         placeholder="Password"
         ref={password}
@@ -40,14 +65,7 @@ const SignInForm = () => {
       <br />
       <button
         className="bg-red-700 rounded-md text-white font-bold ml-20 w-56 mt-3 p-4"
-        onClick={() => {
-          const validateChecker = formValidation(
-            name.current,
-            email.current,
-            password.current
-          );
-          if (validateChecker != null) alert(validateChecker);
-        }}
+        onClick={validatorFunc}
       >
         {logIn ? "Sign In" : "Sign Up"}
       </button>
@@ -56,10 +74,6 @@ const SignInForm = () => {
           <p className="text-white font-bold text-l mb-4 mx-5 text-center mt-4">
             OR
           </p>
-          <button className="bg-gray-500 rounded-md text-white font-bold ml-20 mb-4 w-56 p-4">
-            Use a sign-in code
-          </button>
-          <br />
           <a className="text-white mx-1 ml-32" href="/">
             Forgot password?
           </a>
