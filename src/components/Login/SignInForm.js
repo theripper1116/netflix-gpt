@@ -4,6 +4,7 @@ import { formValidation } from "../../utils/formValidation";
 
 const SignInForm = () => {
   const [logIn, setLogIn] = useState(true);
+  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
   console.log(email);
@@ -23,6 +24,7 @@ const SignInForm = () => {
           className="p-4 m-2 ml-20 bg-gray-700 bg-opacity-80"
           type="text"
           placeholder="Enter Name"
+          ref={name}
         ></input>
       )}
       <input
@@ -41,8 +43,12 @@ const SignInForm = () => {
       <button
         className="bg-red-700 rounded-md text-white font-bold ml-20 w-56 mt-3 p-4"
         onClick={() => {
-          const validateChecker = formValidation(email.current.value, password.current.value);
-          if(validateChecker != null) alert(validateChecker);
+          const validateChecker = formValidation(
+            name.current.value,
+            email.current.value,
+            password.current.value
+          );
+          if (validateChecker != null) alert(validateChecker);
         }}
       >
         {logIn ? "Sign In" : "Sign Up"}
