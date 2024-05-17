@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const checkIfUserIsLoggedIn = useSelector((store) => store.user.userDetail);
+
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black flex">
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black flex">
       <img
         className="w-44"
         alt="Netflix Logo"
@@ -10,7 +13,7 @@ const Header = () => {
       />
       <Link to="/login">
         <button className="btn bg-red-700 text-white font-bold rounded-2xl py-4 px-2">
-          Sign In
+          {checkIfUserIsLoggedIn === null ? "Log In" : "Log Out"}
         </button>
       </Link>
     </div>
