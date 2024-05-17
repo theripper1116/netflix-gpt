@@ -10,9 +10,10 @@ export const createUserInFirebase = (email, password) => {
       // Signed up
       const user = userCredential.user;
       console.log(user);
-      const getCurrentAddress = document.location.href;
-      document.location.href = getCurrentAddress.replace("login", "browse");
-      // ...
+      document.location.href = document.location.href.replace(
+        "login",
+        "browse"
+      );
     })
     .catch((error) => {
       const errorMessage = error.message;
@@ -27,9 +28,10 @@ export const logInUserInFirebase = (email, password) => {
       // Signed in
       const user = userCredential.user;
       console.log(user);
-      const getCurrentAddress = document.location.href;
-      document.location.href = getCurrentAddress.replace("login", "browse");
-      // ...
+      document.location.href = document.location.href.replace(
+        "login",
+        "browse"
+      );
     })
     .catch((error) => {
       const errorCode = error.code;
