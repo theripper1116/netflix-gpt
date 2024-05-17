@@ -1,4 +1,7 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../firebase";
 
 export const createUserInFirebase = (email, password) => {
@@ -7,6 +10,8 @@ export const createUserInFirebase = (email, password) => {
       // Signed up
       const user = userCredential.user;
       console.log(user);
+      const getCurrentAddress = document.location.href;
+      document.location.href = getCurrentAddress.replace("login", "browse");
       // ...
     })
     .catch((error) => {
@@ -22,6 +27,8 @@ export const logInUserInFirebase = (email, password) => {
       // Signed in
       const user = userCredential.user;
       console.log(user);
+      const getCurrentAddress = document.location.href;
+      document.location.href = getCurrentAddress.replace("login", "browse");
       // ...
     })
     .catch((error) => {
