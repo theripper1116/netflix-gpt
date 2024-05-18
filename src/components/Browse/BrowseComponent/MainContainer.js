@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+
 import VideoTitle from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
 
@@ -10,7 +11,7 @@ const MainContainer = () => {
   return (
     <>
       <VideoTitle movieData={getMovieDataForPlayback[0]} />
-      <VideoBackground />
+      <VideoBackground movieId={getMovieDataForPlayback[0].id} />
     </>
   );
 };
