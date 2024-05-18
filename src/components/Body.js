@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 
-import Login from "./Login/Login";
-import Browse from "./Browse";
 import WelcomePage from "./WelcomePage";
 import { addUser, removeUser } from "../utils/store/storeSlice/UserSlice";
+const Browse = lazy(() => import("./Browse/BrowsePage"));
+const Login = lazy(() => import("./Login/Login"));
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -30,11 +30,19 @@ const Body = () => {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: (
+        <Suspense fallback={"Loading..."}>
+          <Login />
+        </Suspense>
+      ),
     },
     {
       path: "/browse",
-      element: <Browse />,
+      element: (
+        <Suspense fallback={"Loading..."}>
+          <Browse />
+        </Suspense>
+      ),
     },
   ]);
   return (
