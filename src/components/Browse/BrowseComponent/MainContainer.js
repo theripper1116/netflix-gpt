@@ -1,8 +1,16 @@
-const MainContainer = ({ mainMovie }) => {
-  console.log(mainMovie);
+import { useSelector } from "react-redux";
+import VideoTitle from "./VideoTitle";
+import VideoBackground from "./VideoBackground";
+
+const MainContainer = () => {
+  const getMovieDataForPlayback = useSelector(
+    (store) => store.movies?.nowPlayingMovies
+  );
+  if (!getMovieDataForPlayback) return;
   return (
     <>
-      <div>"Hi"</div>
+      <VideoTitle movieData={getMovieDataForPlayback[0]} />
+      <VideoBackground />
     </>
   );
 };
