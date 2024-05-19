@@ -6,7 +6,7 @@ import { auth } from "../utils/firebase";
 
 import WelcomePage from "./WelcomePage";
 import { addUser, removeUser } from "../utils/store/storeSlice/UserSlice";
-const Browse = lazy(() => import("./Browse/BrowsePage"));
+const BrowsePage = lazy(() => import("./Browse/BrowsePage"));
 const Login = lazy(() => import("./Login/Login"));
 
 const Body = () => {
@@ -40,7 +40,7 @@ const Body = () => {
       path: "/browse",
       element: (
         <Suspense fallback={"Loading..."}>
-          <Browse />
+          <BrowsePage />
         </Suspense>
       ),
     },

@@ -1,11 +1,11 @@
 const VideoTitle = ({ movieData }) => {
   const { overview, original_title } = movieData;
   return (
-    <div className="pt-36 px-12">
+    <div className="absolute aspect-video text-white pt-[18%] px-12 bg-gradient-to-tr from-black">
       <h1 className="text-3xl font-bold">{original_title}</h1>
       <p className="py-6 text-lg w-1/4">{overview}</p>
       <div>
-        <button className="bg-gray-500 text-black p-4 px-16 opacity-30 rounded-md">
+        <button className="bg-white text-black p-4 px-16 hover:opacity-90 rounded-md">
           <img
             className="w-4 h-4"
             src="https://icon-library.com/images/play-icon-svg/play-icon-svg-28.jpg"
@@ -13,7 +13,7 @@ const VideoTitle = ({ movieData }) => {
           />
           Play
         </button>
-        <button className="mx-2 bg-gray-500 text-black p-4 px-16 opacity-30 rounded-md">
+        <button className="mx-2 bg-white text-black p-4 px-16 hover:opacity-90 rounded-md">
           More Info
         </button>
       </div>
