@@ -1,15 +1,29 @@
 import { useSelector } from "react-redux";
 
 import MovieList from "./SecondaryContainer/MovieList";
+import { useGetPopularMovies } from "../../../utils/getMovies/useGetPopularMovies";
+import useGetTopRatedMovies from "../../../utils/getMovies/useGetTopRatedMovies";
 
 const SecondaryContainer = () => {
-  const moviesList = useSelector((store) => store.movies?.nowPlayingMovies);
+  useGetPopularMovies();
+  useGetTopRatedMovies();
 
-  if (!moviesList) return null;
+  const moviesList = useSelector((store) => store.movies);
+
+  if (
+    !moviesList.nowPlayingMovies &&
+    !moviesList.popularMovies &&
+    !moviesList.topRatedMovies
+  )
+    return null;
 
   return (
     <>
-      <MovieList list={moviesList} />
+      <MovieList
+        nowPlayingMovieList={moviesList.nowPlayingMovies}
+        popularMovieList={moviesList.popularMovies}
+        topratedMovieList={moviesList.topRatedMovies}
+      />
     </>
   );
 };

@@ -6,6 +6,7 @@ import { auth } from "../utils/firebase";
 
 import WelcomePage from "./WelcomePage";
 import { addUser, removeUser } from "../utils/store/storeSlice/UserSlice";
+import Error from "./Error";
 const BrowsePage = lazy(() => import("./Browse/BrowsePage"));
 const Login = lazy(() => import("./Login/Login"));
 
@@ -27,6 +28,7 @@ const Body = () => {
     {
       path: "/",
       element: <WelcomePage />,
+      errorElement: <Error />,
     },
     {
       path: "/login",
@@ -35,6 +37,7 @@ const Body = () => {
           <Login />
         </Suspense>
       ),
+      errorElement: <Error />,
     },
     {
       path: "/browse",
@@ -43,6 +46,7 @@ const Body = () => {
           <BrowsePage />
         </Suspense>
       ),
+      errorElement: <Error />,
     },
   ]);
   return (
