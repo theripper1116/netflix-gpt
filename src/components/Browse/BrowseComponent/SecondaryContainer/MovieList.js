@@ -13,8 +13,8 @@ const MovieList = ({
     return;
 
   return (
-    <div className="bg-black">
-      <h1 className="text-3xl font-bold py-2 px-2 text-white">Now Playing</h1>
+    <div className=" bg-gradient-to-b to-black -mt-72 ">
+      <h1 className="text-3xl font-bold px-5 mx-2 py-2 text-white">Now Playing</h1>
       <div className="flex overflow-x-scroll">
         <div className="flex">
           {nowPlayingMovieList.map((data) => {
@@ -22,7 +22,7 @@ const MovieList = ({
           })}
         </div>
       </div>
-      <h1 className="text-3xl font-bold py-2 px-2 text-white">
+      <h1 className="text-3xl font-bold px-5 mx-2 py-2 text-white">
         Popular Movies
       </h1>
       <div className="flex overflow-x-scroll">
@@ -32,7 +32,7 @@ const MovieList = ({
           })}
         </div>
       </div>
-      <h1 className="text-3xl font-bold py-2 px-2 text-white">
+      <h1 className="text-3xl font-bold px-5 mx-2 py-2 text-white">
         Top Rated Movies
       </h1>
       <div className="flex overflow-x-scroll">

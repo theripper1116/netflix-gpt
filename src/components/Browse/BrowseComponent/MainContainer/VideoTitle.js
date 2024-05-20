@@ -1,7 +1,7 @@
 const VideoTitle = ({ movieData }) => {
   const { overview, original_title } = movieData;
   return (
-    <div className="absolute aspect-video text-white pt-[18%] px-12 bg-gradient-to-tr from-black">
+    <div className="absolute aspect-video text-white pt-[8%] px-12 bg-gradient-to-tr from-black mt-20">
       <h1 className="text-3xl font-bold">{original_title}</h1>
       <p className="py-6 text-lg w-1/4">{overview}</p>
       <div>

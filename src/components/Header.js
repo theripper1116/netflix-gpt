@@ -12,30 +12,37 @@ const Header = () => {
 
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black flex">
-      <img className="w-44" alt="Netflix Logo" src={NETFLIX_LOGO} />
+      <img className="w-44 mr-96" alt="Netflix Logo" src={NETFLIX_LOGO} />
       {checkIfUserIsLoggedIn === null ? (
         <Link to="/login">
-          <button className="btn bg-red-700 text-white font-bold rounded-2xl py-4 px-2">
+          <button className="btn bg-red-700 text-white font-bold rounded-2xl py-4 px-2 ml-96">
             Log In
           </button>
         </Link>
       ) : (
-        <Link to="/">
-          <button
-            className="btn bg-red-700 text-white font-bold rounded-2xl py-4 px-2"
-            onClick={() => {
-              signOut(auth)
-                .then(() => {
-                  console.log("sign out");
-                })
-                .catch((error) => {});
+        <>
+          <Link to="/">
+            <button
+              className="btn bg-red-700 text-white font-bold rounded-2xl py-4 px-2 ml-96"
+              onClick={() => {
+                signOut(auth)
+                  .then(() => {
+                    console.log("sign out");
+                  })
+                  .catch((error) => {});
 
-              dispatch(removeUser());
-            }}
-          >
-            Log Out
-          </button>
-        </Link>
+                dispatch(removeUser());
+              }}
+            >
+              Log Out
+            </button>
+          </Link>
+          <Link to="/SearchPage">
+            <button className="btn bg-red-700 text-white font-bold rounded-2xl py-4 px-2 ml-8">
+              Search Movie
+            </button>
+          </Link>
+        </>
       )}
     </div>
   );
