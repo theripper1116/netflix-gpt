@@ -2,9 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const gptSlice = createSlice({
   name: "gpt",
-  initialState: {},
-  reducers: {},
+  initialState: {
+    searchedResultForMovies: [],
+  },
+  reducers: {
+    addSearchedMovies: (state, action) => {
+      const { payload } = action;
+      state.searchedResultForMovies = payload;
+    },
+  },
 });
 
-export {} from gptSlice.actions;
+export const { addSearchedMovies } = gptSlice.actions;
 export default gptSlice.reducer;
