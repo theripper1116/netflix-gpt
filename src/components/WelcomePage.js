@@ -7,6 +7,7 @@ const WelcomePage = () => {
       <Header />
       <div>
         <img
+        className="w-screen"
           alt="background-image-for-welcome-page"
           src={NETFLIX_BACKGROUND_IMAGE}
         />

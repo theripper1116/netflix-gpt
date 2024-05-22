@@ -1,24 +1,30 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import openai from "../../utils/optionsForApi/openAIHelper";
-import { addSearchedMovies } from "../../utils/store/storeSlice/gptSlice";
+import {
+  addSearchedMovies,
+  addSearchedMoviesFromTMDB,
+} from "../../utils/store/storeSlice/gptSlice";
 import { TMDB_MOVIE_SEARCH_URL } from "../../utils/Constants/apiURL";
 import { API_OPTIONS } from "../../utils/optionsForApi/optionsForAPI";
+import GPTSearchPage from "./GPTSearchPage";
 
 const GPTSearchBar = () => {
-  const getSearchedMoviesFromStore = useSelector(
-    (store) => store.openAIGPT.searchedResultForMovies
-  );
+  const getSearchedMoviesFromStore = useSelector((store) => store.openAIGPT);
   const dispatch = useDispatch();
   const getSearchedDataFromTMDB = () => {
-    if (!getSearchedMoviesFromStore) return;
-    getSearchedMoviesFromStore.forEach((movieName) => {
+    getSearchedMoviesFromStore.searchedResultForMovies?.forEach((movieName) => {
       fetch(
         TMDB_MOVIE_SEARCH_URL.replace("query=default", `query=${movieName}`),
         API_OPTIONS
       )
         .then((response) => response.json())
-        .then((response) => console.log(response));
+        .then((response) => {
+          console.log(response);
+          response?.results?.map((movieData) => {
+            dispatch(addSearchedMoviesFromTMDB(movieData));
+          });
+        });
     });
   };
   const getMovieResultFromOpenAI = async () => {
@@ -60,6 +66,13 @@ const GPTSearchBar = () => {
           Search
         </button>
       </form>
+      <div>
+        {getSearchedMoviesFromStore?.searchedMoviesFromTMDB?.map(
+          (movieData) => {
+            <GPTSearchPage movieData={movieData} />;
+          }
+        )}
+      </div>
     </div>
   );
 };
