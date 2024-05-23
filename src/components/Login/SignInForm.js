@@ -12,7 +12,7 @@ const SignInForm = () => {
   const password = useRef(null);
 
   const validatorFunc = () => {
-    const validateChecker = formValidation(email.current, password.current);
+    const validateChecker = formValidation(email.current.value, password.current.value);
     if (validateChecker != null) {
       alert(validateChecker);
       return;

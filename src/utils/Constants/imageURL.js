@@ -11,3 +11,6 @@ export const DEFAULT_MOVIE_IMAGE =
 
 export const DEVICES_IMAGE =
   "https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Devices.png";
+
+export const TICK_PHOTO_FOR_PLAN_CHOOSING =
+  "https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Checkmark.png";

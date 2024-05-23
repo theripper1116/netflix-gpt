@@ -11,8 +11,8 @@ export const createUserInFirebase = (email, password) => {
       const user = userCredential.user;
       console.log(user);
       document.location.href = document.location.href.replace(
-        "login",
-        "browse"
+        "signUp",
+        "choosePlan"
       );
     })
     .catch((error) => {

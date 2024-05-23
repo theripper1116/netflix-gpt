@@ -7,6 +7,7 @@ import { auth } from "../utils/firebase";
 import WelcomePage from "./WelcomePage";
 import { addUser, removeUser } from "../utils/store/storeSlice/UserSlice";
 import Error from "./Error";
+const ChoosePlan = lazy(() => import("./SignUp/ChoosePlan"));
 const SignUp = lazy(() => import("./SignUp/SignUp"));
 const BrowsePage = lazy(() => import("./Browse/BrowsePage"));
 const Login = lazy(() => import("./Login/Login"));
@@ -64,6 +65,15 @@ const Body = () => {
       element: (
         <Suspense fallback={"Loading..."}>
           <SignUp />
+        </Suspense>
+      ),
+      errorElement: <Error />,
+    },
+    {
+      path: "/choosePlan",
+      element: (
+        <Suspense fallback={"Loading..."}>
+          <ChoosePlan />
         </Suspense>
       ),
       errorElement: <Error />,
