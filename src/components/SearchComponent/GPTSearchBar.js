@@ -8,25 +8,57 @@ import {
 import { TMDB_MOVIE_SEARCH_URL } from "../../utils/Constants/apiURL";
 import { API_OPTIONS } from "../../utils/optionsForApi/optionsForAPI";
 import GPTSearchPage from "./GPTSearchPage";
-import getMovieResultFromOpenAI from "../../utils/openAIResponse/getMovieResultFromOpenAI";
-import getMovieDetailsFromTMDB from "../../utils/openAIResponse/getMovieDetailsFromTMDB";
 
 const GPTSearchBar = () => {
   const getSearchedMoviesFromStore = useSelector((store) => store.openAIGPT);
   const dispatch = useDispatch();
-
-  const storeMovieResultFromOpenAI = () => {
-    dispatch(addSearchedMovies(getMovieResultFromOpenAI()));
-    console.log(getSearchedMoviesFromStore?.searchedResultForMovies);
-    dispatch(
-      addSearchedMoviesFromTMDB(
-        getMovieDetailsFromTMDB(
-          getSearchedMoviesFromStore?.searchedResultForMovies
-        )
+  const getSearchedDataFromTMDB = () => {
+    getSearchedMoviesFromStore?.searchedResultForMovies?.forEach((movieName) => {
+      fetch(
+        TMDB_MOVIE_SEARCH_URL.replace("query=default", `query=${movieName}`),
+        API_OPTIONS
       )
-    );
-    console.log(getSearchedMoviesFromStore?.searchedMoviesFromTMDB);
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          response?.results?.map((movieData) => {
+            dispatch(addSearchedMoviesFromTMDB(movieData));
+          });
+        });
+    });
   };
+  const getMovieResultFromOpenAI = async () => {
+    const gptResult = await openai.chat.completions.create({
+      messages: [
+        {
+          role: "user",
+          content: `Act as a movie recommendation system and suggest some movies for the query: ${
+            document.getElementById("input-search-box-for-openAI-gpt").value
+          }, only give me 10 movies, comma-separated like the example result given ahead. Example result: Movie1, movie2, movie3.
+          Also, don't give the year of the searched movie`,
+        },
+      ],
+      model: "gpt-3.5-turbo",
+    });
+    dispatch(
+      addSearchedMovies(gptResult?.choices[0]?.message?.content.split(", "))
+    );
+    getSearchedDataFromTMDB();
+  };
+
+  // const storeMovieResultFromOpenAI = () => {
+  //   dispatch(addSearchedMovies(getMovieResultFromOpenAI()));
+  //   console.log(getSearchedMoviesFromStore?.searchedResultForMovies);
+  //   dispatch(
+  //     addSearchedMoviesFromTMDB(
+  //       getMovieDetailsFromTMDB(
+  //         getSearchedMoviesFromStore?.searchedResultForMovies
+  //       )
+  //     )
+  //   );
+  //   console.log(getSearchedMoviesFromStore?.searchedMoviesFromTMDB);
+  // };
+
   return (
     <div className="absolute my-48 mx-[30%]">
       <form
@@ -41,7 +73,7 @@ const GPTSearchBar = () => {
         ></input>
         <button
           onClick={() => {
-            storeMovieResultFromOpenAI();
+            getMovieResultFromOpenAI();
           }}
           className="bg-red-700 text-white font-bold text-xl p-2 rounded-lg mt-4 ml-20"
         >
