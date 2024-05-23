@@ -7,7 +7,6 @@ const moviesSlice = createSlice({
     playbackVideoInfo: [],
     popularMovies: [],
     topRatedMovies: [],
-    searchedMoviesFromGPT: [],
   },
   reducers: {
     addMovies: (state, action) => {
@@ -30,6 +29,12 @@ const moviesSlice = createSlice({
       const { payload } = action;
       state.searchedMoviesFromGPT = payload;
     },
+    removeAllMovies: (state) => {
+      state.nowPlayingMovies = null;
+      state.playbackVideoInfo = null;
+      state.popularMovies = null;
+      state.topRatedMovies = null;
+    },
   },
 });
 
@@ -38,6 +43,6 @@ export const {
   addPlaybackVideo,
   addPopularMovies,
   addTopRatedMovies,
-  addSearchedMoviesFromGPT,
+  removeAllMovies,
 } = moviesSlice.actions;
 export default moviesSlice.reducer;

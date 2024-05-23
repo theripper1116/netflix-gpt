@@ -4,6 +4,7 @@ import openai from "../../utils/optionsForApi/openAIHelper";
 import {
   addSearchedMovies,
   addSearchedMoviesFromTMDB,
+  clearSearchedData,
 } from "../../utils/store/storeSlice/gptSlice";
 import { TMDB_MOVIE_SEARCH_URL } from "../../utils/Constants/apiURL";
 import { API_OPTIONS } from "../../utils/optionsForApi/optionsForAPI";
@@ -12,15 +13,14 @@ import GPTSearchPage from "./GPTSearchPage";
 const GPTSearchBar = () => {
   const getSearchedMoviesFromStore = useSelector((store) => store.openAIGPT);
   const dispatch = useDispatch();
-  const getSearchedDataFromTMDB = () => {
-    getSearchedMoviesFromStore?.searchedResultForMovies?.forEach((movieName) => {
+  const getSearchedDataFromTMDB = (searchedMovieArray) => {
+    searchedMovieArray?.forEach((movieName) => {
       fetch(
         TMDB_MOVIE_SEARCH_URL.replace("query=default", `query=${movieName}`),
         API_OPTIONS
       )
         .then((response) => response.json())
         .then((response) => {
-          console.log(response);
           response?.results?.map((movieData) => {
             dispatch(addSearchedMoviesFromTMDB(movieData));
           });
@@ -43,7 +43,9 @@ const GPTSearchBar = () => {
     dispatch(
       addSearchedMovies(gptResult?.choices[0]?.message?.content.split(", "))
     );
-    getSearchedDataFromTMDB();
+    getSearchedDataFromTMDB(
+      gptResult?.choices[0]?.message?.content.split(", ")
+    );
   };
 
   // const storeMovieResultFromOpenAI = () => {
@@ -60,34 +62,46 @@ const GPTSearchBar = () => {
   // };
 
   return (
-    <div className="absolute my-48 mx-[30%]">
-      <form
-        className="bg-black p-44 bg-gradient-to-b from-black opacity-80"
-        onSubmit={(e) => e.preventDefault()}
-      >
-        <input
-          id="input-search-box-for-openAI-gpt"
-          className="p-5 ml-2 rounded-xl text-white bg-black opacity-70 border border-red-700"
-          type="text"
-          placeholder="Search for a Show/Movies"
-        ></input>
-        <button
-          onClick={() => {
-            getMovieResultFromOpenAI();
-          }}
-          className="bg-red-700 text-white font-bold text-xl p-2 rounded-lg mt-4 ml-20"
+    <>
+      <div className="absolute my-36 mx-[30%] bg-gradient-to-b from-black">
+        <form
+          className="p-44 bg-gradient-to-b from-black opacity-80"
+          onSubmit={(e) => e.preventDefault()}
         >
-          Search
-        </button>
-      </form>
-      <div>
-        {getSearchedMoviesFromStore?.searchedMoviesFromTMDB?.map(
-          (movieData) => {
-            <GPTSearchPage movieData={movieData} />;
-          }
-        )}
+          <input
+            id="input-search-box-for-openAI-gpt"
+            className="p-5 ml-2 rounded-xl text-white bg-black opacity-70 border border-red-700"
+            type="text"
+            placeholder="Search for a Show/Movies"
+          ></input>
+          <button
+            onClick={() => {
+              getMovieResultFromOpenAI();
+            }}
+            className="bg-red-700 text-white font-bold text-xl p-2 rounded-lg mt-4 ml-20"
+          >
+            Search
+          </button>
+          <button
+            className="bg-red-700 text-white p-2 mt-2 ml-14 font-bold text-xl rounded-lg"
+            onClick={() => {
+              dispatch(clearSearchedData());
+            }}
+          >
+            Clear Search
+          </button>
+        </form>
       </div>
-    </div>
+      <div className="flex overflow-x-scroll bg-gradient-to-b from-black">
+        <div className="flex mt-[42%]">
+          {getSearchedMoviesFromStore?.searchedMoviesFromTMDB?.map(
+            (movieData) => {
+              return <GPTSearchPage key={movieData.id} movieData={movieData} />;
+            }
+          )}
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -1,7 +1,11 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { formValidation } from "../../utils/signInOrSignUp/formValidation";
-import { createUserInFirebase, logInUserInFirebase } from "../../utils/signInOrSignUp/createOrLoginUserInFirebase";
+import {
+  createUserInFirebase,
+  logInUserInFirebase,
+} from "../../utils/signInOrSignUp/createOrLoginUserInFirebase";
 
 const SignInForm = () => {
   const [logIn, setLogIn] = useState(true);
@@ -85,17 +89,12 @@ const SignInForm = () => {
           </label>
         </div>
       )}
-      <p
-        className="text-white mx-1 mt-3 text-lg"
-        onClick={() => {
-          if (logIn) setLogIn(false);
-          else setLogIn(true);
-        }}
-      >
-        {logIn
-          ? "New to Netflix? Sign Up now."
-          : "Already a user: Sign In now."}
+      <Link to="/signUp">
+      <p className="text-white mx-1 mt-3 text-lg">
+      
+        New to Netflix? Sign Up now.
       </p>
+      </Link>
     </form>
   );
 };

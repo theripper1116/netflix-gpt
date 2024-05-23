@@ -5,3 +5,6 @@ export const NETFLIX_LOGO =
   "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png";
 
 export const MOVIE_IMAGE = "https://image.tmdb.org/t/p/original/";
+
+export const DEFAULT_MOVIE_IMAGE =
+  "https://images.ctfassets.net/y2ske730sjqp/4aEQ1zAUZF5pLSDtfviWjb/ba04f8d5bd01428f6e3803cc6effaf30/Netflix_N.png";

@@ -5,6 +5,7 @@ import { auth } from "../utils/firebase";
 
 import { removeUser } from "../utils/store/storeSlice/UserSlice";
 import { NETFLIX_LOGO } from "../utils/Constants/imageURL";
+import { removeAllMovies } from "../utils/store/storeSlice/MoviesSlice";
 
 const Header = () => {
   const checkIfUserIsLoggedIn = useSelector((store) => store?.user?.userDetail);
@@ -12,7 +13,7 @@ const Header = () => {
 
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black flex">
-      <img className="w-44 mr-96" alt="Netflix Logo" src={NETFLIX_LOGO} />
+      <img className="w-44 mr-96 ml-28" alt="Netflix Logo" src={NETFLIX_LOGO} />
       {checkIfUserIsLoggedIn === null ? (
         <Link to="/login">
           <button className="btn bg-red-700 text-white font-bold rounded-2xl py-4 px-2 ml-96">
@@ -27,9 +28,12 @@ const Header = () => {
               onClick={() => {
                 signOut(auth)
                   .then(() => {
-                    console.log("sign out");
+                    alert("Successfully LogOut");
+                    dispatch(removeAllMovies());
                   })
-                  .catch((error) => {});
+                  .catch((error) => {
+                    console.log(error.message);
+                  });
 
                 dispatch(removeUser());
               }}
