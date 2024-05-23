@@ -7,11 +7,11 @@ const MainContainer = () => {
   const getMovieDataForPlayback = useSelector(
     (store) => store.movies?.nowPlayingMovies
   );
-  if (!getMovieDataForPlayback) return;
+  if (getMovieDataForPlayback.length === 0) return;
   return (
     <>
       <VideoTitle movieData={getMovieDataForPlayback[0]} />
-      <VideoBackground movieId={getMovieDataForPlayback[0].id} />
+      <VideoBackground movieId={getMovieDataForPlayback[0]?.id} />
     </>
   );
 };
