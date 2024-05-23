@@ -8,3 +8,6 @@ export const MOVIE_IMAGE = "https://image.tmdb.org/t/p/original/";
 
 export const DEFAULT_MOVIE_IMAGE =
   "https://images.ctfassets.net/y2ske730sjqp/4aEQ1zAUZF5pLSDtfviWjb/ba04f8d5bd01428f6e3803cc6effaf30/Netflix_N.png";
+
+export const DEVICES_IMAGE =
+  "https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Devices.png";

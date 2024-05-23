@@ -8,18 +8,11 @@ import {
 } from "../../utils/signInOrSignUp/createOrLoginUserInFirebase";
 
 const SignInForm = () => {
-  const [logIn, setLogIn] = useState(true);
-  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
   const validatorFunc = () => {
-    const validateChecker = formValidation(
-      logIn,
-      name.current,
-      email.current,
-      password.current
-    );
+    const validateChecker = formValidation(email.current, password.current);
     if (validateChecker != null) {
       alert(validateChecker);
       return;
@@ -28,9 +21,7 @@ const SignInForm = () => {
   };
 
   const registerOrLogInUserFunc = () => {
-    if (!logIn)
-      createUserInFirebase(email.current.value, password.current.value);
-    else logInUserInFirebase(email.current.value, password.current.value);
+    logInUserInFirebase(email.current.value, password.current.value);
   };
 
   return (
@@ -41,16 +32,8 @@ const SignInForm = () => {
       }}
     >
       <p className="text-white font-bold text-3xl mb-3">
-        {logIn ? "Sign In" : "Sign Up"}
+        Sign In
       </p>
-      {!logIn && (
-        <input
-          className="p-4 m-2 ml-20 bg-gray-700 bg-opacity-80 text-white"
-          type="text"
-          placeholder="Enter Name"
-          ref={name}
-        ></input>
-      )}
       <input
         className="p-4 m-2 ml-20 bg-gray-700 bg-opacity-80 text-white"
         type="text"
@@ -65,12 +48,11 @@ const SignInForm = () => {
       ></input>
       <br />
       <button
-        className="bg-red-700 rounded-md text-white font-bold ml-20 w-56 mt-3 p-4"
+        className="bg-netflix-red rounded-md text-white font-bold ml-20 w-56 mt-3 p-4"
         onClick={validatorFunc}
       >
-        {logIn ? "Sign In" : "Sign Up"}
+        Sign In
       </button>
-      {logIn && (
         <div>
           <p className="text-white font-bold text-l mb-4 mx-5 text-center mt-4">
             OR
@@ -88,12 +70,10 @@ const SignInForm = () => {
             Remember me
           </label>
         </div>
-      )}
       <Link to="/signUp">
-      <p className="text-white mx-1 mt-3 text-lg">
-      
-        New to Netflix? Sign Up now.
-      </p>
+        <p className="text-white mx-1 mt-3 text-lg">
+          New to Netflix? Sign Up now.
+        </p>
       </Link>
     </form>
   );

@@ -16,15 +16,15 @@ const Header = () => {
       <img className="w-44 mr-96 ml-28" alt="Netflix Logo" src={NETFLIX_LOGO} />
       {checkIfUserIsLoggedIn === null ? (
         <Link to="/login">
-          <button className="btn bg-red-700 text-white font-bold rounded-2xl py-4 px-2 ml-96">
-            Log In
+          <button className="btn bg-netflix-red text-white rounded-md p-2 py-2 px-6 ml-96 my-3">
+            Sign In
           </button>
         </Link>
       ) : (
         <>
           <Link to="/">
             <button
-              className="btn bg-red-700 text-white font-bold rounded-2xl py-4 px-2 ml-96"
+              className="btn bg-netflix-red text-white rounded-md p-2 py-2 px-6 ml-96 my-3"
               onClick={() => {
                 signOut(auth)
                   .then(() => {
@@ -38,11 +38,11 @@ const Header = () => {
                 dispatch(removeUser());
               }}
             >
-              Log Out
+              Sign Out
             </button>
           </Link>
           <Link to="/SearchPage">
-            <button className="btn bg-red-700 text-white font-bold rounded-2xl py-4 px-2 ml-8">
+            <button className="btn bg-netflix-red text-white font-bold rounded-2xl py-4 px-2 ml-8">
               Search Movie
             </button>
           </Link>

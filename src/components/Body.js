@@ -7,6 +7,7 @@ import { auth } from "../utils/firebase";
 import WelcomePage from "./WelcomePage";
 import { addUser, removeUser } from "../utils/store/storeSlice/UserSlice";
 import Error from "./Error";
+const SignUp = lazy(() => import("./SignUp/SignUp"));
 const BrowsePage = lazy(() => import("./Browse/BrowsePage"));
 const Login = lazy(() => import("./Login/Login"));
 const SearchComponent = lazy(() => import("./SearchComponent/SearchComponent"));
@@ -54,6 +55,15 @@ const Body = () => {
       element: (
         <Suspense fallback={"Loading..."}>
           <SearchComponent />
+        </Suspense>
+      ),
+      errorElement: <Error />,
+    },
+    {
+      path: "/signUp",
+      element: (
+        <Suspense fallback={"Loading..."}>
+          <SignUp />
         </Suspense>
       ),
       errorElement: <Error />,

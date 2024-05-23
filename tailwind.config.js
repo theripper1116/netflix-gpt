@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'netflix-red': '#f6121d',
+      },
+    },
   },
   plugins: [],
 };
