@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'netflix-red': '#f6121d',
+        "netflix-red": "#f6121d",
+        "netflix-plan-chooser-color": "#20529d",
       },
     },
   },

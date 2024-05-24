@@ -6,15 +6,10 @@ const VideoTitle = ({ movieData }) => {
       <p className="py-6 text-lg w-1/4">{overview}</p>
       <div>
         <button className="bg-white text-black p-4 px-16 hover:opacity-90 rounded-md">
-          <img
-            className="w-4 h-4"
-            src="https://icon-library.com/images/play-icon-svg/play-icon-svg-28.jpg"
-            alt="play-button-icon"
-          />
-          Play
+          ▶ Play
         </button>
         <button className="mx-2 bg-white text-black p-4 px-16 hover:opacity-90 rounded-md">
-          More Info
+          ℹ More Info
         </button>
       </div>
     </div>

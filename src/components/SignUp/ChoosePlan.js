@@ -24,7 +24,7 @@ const ChoosePlan = () => {
         </Link>
       </div>
       {!outputOnWindow ? (
-        <div className="absolute w-screen text-center">
+        <div className="absolute w-screen pb-8 text-center border-2 border-black">
           <img
             className="w-14 ml-auto mr-auto mt-36"
             src={TICK_PHOTO_FOR_PLAN_CHOOSING}
@@ -39,7 +39,10 @@ const ChoosePlan = () => {
           <br />
           <p className="text-xl">✔ No ads and no extra fees. Ever.</p>
           <br />
-          <button className="bg-netflix-red text-white px-36 py-4 rounded-md">
+          <button
+            onClick={() => setOutputOnWindow(true)}
+            className="bg-netflix-red text-white px-36 py-4 rounded-md"
+          >
             Next
           </button>
         </div>
