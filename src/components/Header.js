@@ -42,7 +42,7 @@ const Header = () => {
             </button>
           </Link>
           <Link to="/SearchPage">
-            <button className="btn bg-netflix-red text-white font-bold rounded-2xl py-4 px-2 ml-8">
+            <button className="btn bg-netflix-red text-white rounded-md py-2 px-6 mt-2.5 ml-8">
               Search Movie
             </button>
           </Link>
