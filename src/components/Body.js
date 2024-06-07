@@ -7,6 +7,7 @@ import { auth } from "../utils/firebase";
 import WelcomePage from "./WelcomePage";
 import { addUser, removeUser } from "../utils/store/storeSlice/UserSlice";
 import Error from "./Error";
+import ShimmerUIForWindowTransition from "../shimmer/ShimmerUIForWindowTransition.tsx";
 
 const ChoosePlan = lazy(() => import("./signUp/ChoosePlan"));
 const SignUp = lazy(() => import("./signUp/SignUp"));
@@ -38,7 +39,7 @@ const Body = () => {
     {
       path: "/login",
       element: (
-        <Suspense fallback={"Loading..."}>
+        <Suspense fallback={<ShimmerUIForWindowTransition />}>
           <Login />
         </Suspense>
       ),
@@ -47,7 +48,7 @@ const Body = () => {
     {
       path: "/browse",
       element: (
-        <Suspense fallback={"Loading..."}>
+        <Suspense fallback={<ShimmerUIForWindowTransition />}>
           <BrowsePage />
         </Suspense>
       ),
@@ -67,7 +68,7 @@ const Body = () => {
     {
       path: "/SearchPage",
       element: (
-        <Suspense fallback={"Loading..."}>
+        <Suspense fallback={<ShimmerUIForWindowTransition />}>
           <SearchComponent />
         </Suspense>
       ),
@@ -76,7 +77,7 @@ const Body = () => {
     {
       path: "/signUp",
       element: (
-        <Suspense fallback={"Loading..."}>
+        <Suspense fallback={<ShimmerUIForWindowTransition />}>
           <SignUp />
         </Suspense>
       ),
@@ -85,16 +86,16 @@ const Body = () => {
     {
       path: "/choosePlan",
       element: (
-        <Suspense fallback={"Loading..."}>
+        <Suspense fallback={<ShimmerUIForWindowTransition />}>
           <ChoosePlan />
         </Suspense>
       ),
       errorElement: <Error />,
     },
     {
-      path: "/playVideo",
+      path: "/playVideo/:movieId",
       element: (
-        <Suspense fallback={"Loading..."}>
+        <Suspense fallback={<ShimmerUIForWindowTransition />}>
           <PlayVideo />
         </Suspense>
       ),

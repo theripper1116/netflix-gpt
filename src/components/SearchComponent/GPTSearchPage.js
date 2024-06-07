@@ -4,17 +4,20 @@ import {
   MOVIE_IMAGE,
   DEFAULT_MOVIE_IMAGE,
 } from "../../utils/constants/imageURL";
+import { Link } from "react-router-dom";
 
 const GPTSearchPage = ({ movieData }) => {
   if (!movieData) return;
-  const { poster_path, title } = movieData;
+  const { poster_path, title, id } = movieData;
   return (
     <div className="w-48">
-      <LazyLoadImage
-        alt={title + "_image"}
-        className="p-1"
-        src={poster_path ? MOVIE_IMAGE + poster_path : DEFAULT_MOVIE_IMAGE}
-      />
+      <Link to={"/playVideo/" + id}>
+        <LazyLoadImage
+          alt={title + "_image"}
+          className="w-44"
+          src={poster_path ? MOVIE_IMAGE + poster_path : DEFAULT_MOVIE_IMAGE}
+        />
+      </Link>
     </div>
   );
 };

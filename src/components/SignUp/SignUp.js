@@ -25,8 +25,8 @@ const SignUp = () => {
           <img
             className="w-3/12 ml-auto mr-auto mt-36"
             src={DEVICES_IMAGE}
-            alt="devices-image"
-          ></img>
+            alt="devices-image-snippet"
+          />
           <p className="mt-5 font-bold">STEP 1 OF 3</p>
           <p className="font-bold text-4xl">
             Finish setting up your <br /> account

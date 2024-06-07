@@ -1,17 +1,19 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { MOVIE_IMAGE } from "../../../../utils/constants/imageURL.js";
-import ShimmerUI from "../../../../shimmer/ShimmerUI.tsx";
+import { Link } from "react-router-dom";
 
 const MovieCard = ({ movieData }) => {
-  const { poster_path, title } = movieData;
+  const { poster_path, title, id } = movieData;
   return (
     <div className="w-48">
-      <LazyLoadImage
-        alt={title + "_image"}
-        className="p-1"
-        src={MOVIE_IMAGE + poster_path}
-      />
+      <Link to={"/playVideo/"+id}>
+        <LazyLoadImage
+          alt={title + "_image"}
+          className="w-44"
+          src={MOVIE_IMAGE + poster_path}
+        />
+      </Link>
     </div>
   );
 };

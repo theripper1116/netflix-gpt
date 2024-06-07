@@ -18,7 +18,7 @@ const useGetNowPlayingMoviesTrailer = (movieId) => {
     );
     dispatch(
       addPlaybackVideo(
-        trailerForNowPlayingMovie.length != 0
+        trailerForNowPlayingMovie.length !== 0
           ? trailerForNowPlayingMovie[0]
           : jsonNowPlayingMoviesData?.results[0]
       )
