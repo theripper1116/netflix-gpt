@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import MovieList from "./SecondaryContainer/MovieList";
+import MovieList from "./secondaryContainer/MovieList";
 import { useGetPopularMovies } from "../../../utils/getMovies/useGetPopularMovies";
 import useGetTopRatedMovies from "../../../utils/getMovies/useGetTopRatedMovies";
 

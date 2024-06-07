@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { API_OPTIONS } from "../optionsForApi/optionsForAPI";
 import { addTopRatedMovies } from "../store/storeSlice/MoviesSlice";
-import { TMDB_TOP_RATED_URL } from "../../utils/Constants/apiURL";
+import { TMDB_TOP_RATED_URL } from "../constants/apiURL";
 
 export const useGetTopRatedMovies = () => {
   const dispatch = useDispatch();

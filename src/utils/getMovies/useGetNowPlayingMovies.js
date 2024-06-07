@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 import { API_OPTIONS } from "../optionsForApi/optionsForAPI";
 import { addMovies } from "../store/storeSlice/MoviesSlice";
-import { TMDB_NOW_PLAYING_URL } from "../../utils/Constants/apiURL";
+import { TMDB_NOW_PLAYING_URL } from "../../utils/constants/apiURL";
 
 export const useGetNowPlayingMovies = () => {
   const dispatch = useDispatch();

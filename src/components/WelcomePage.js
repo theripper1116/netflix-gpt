@@ -1,4 +1,4 @@
-import { NETFLIX_BACKGROUND_IMAGE } from "../utils/Constants/imageURL";
+import { NETFLIX_BACKGROUND_IMAGE } from "../utils/constants/imageURL";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 

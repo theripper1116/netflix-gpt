@@ -1,4 +1,4 @@
-import MovieCard from "../SecondaryContainer/MovieCard";
+import MovieCard from "./MovieCard";
 
 const MovieList = ({
   nowPlayingMovieList,
@@ -13,13 +13,13 @@ const MovieList = ({
     return;
 
   return (
-    <div className=" bg-gradient-to-b to-black -mt-72 ">
+    <div className=" bg-gradient-to-b to-black -mt-64 ">
       <h1 className="text-3xl font-bold px-5 mx-2 py-2 text-white">
         Now Playing
       </h1>
       <div className="flex overflow-x-scroll">
         <div className="flex">
-          {nowPlayingMovieList.map((data) => {
+          {nowPlayingMovieList?.map((data) => {
             return <MovieCard key={data.id} movieData={data} />;
           })}
         </div>

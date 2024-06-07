@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
@@ -7,11 +7,13 @@ import { auth } from "../utils/firebase";
 import WelcomePage from "./WelcomePage";
 import { addUser, removeUser } from "../utils/store/storeSlice/UserSlice";
 import Error from "./Error";
-const ChoosePlan = lazy(() => import("./SignUp/ChoosePlan"));
-const SignUp = lazy(() => import("./SignUp/SignUp"));
+
+const ChoosePlan = lazy(() => import("./signUp/ChoosePlan"));
+const SignUp = lazy(() => import("./signUp/SignUp"));
 const BrowsePage = lazy(() => import("./Browse/BrowsePage"));
-const Login = lazy(() => import("./Login/Login"));
-const SearchComponent = lazy(() => import("./SearchComponent/SearchComponent"));
+const Login = lazy(() => import("./login/Login.js"));
+const SearchComponent = lazy(() => import("./searchComponent/SearchComponent"));
+const PlayVideo = lazy(() => import("./playVideo/PlayVideo.tsx"));
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -49,6 +51,17 @@ const Body = () => {
           <BrowsePage />
         </Suspense>
       ),
+      // children: [
+      //   {
+      //     path: "/playVideo",
+      //     element: (
+      //       <Suspense fallback={"Loading..."}>
+      //         <PlayVideo />
+      //       </Suspense>
+      //     ),
+      //     errorElement: <Error />,
+      //   },
+      // ],
       errorElement: <Error />,
     },
     {
@@ -77,6 +90,14 @@ const Body = () => {
         </Suspense>
       ),
       errorElement: <Error />,
+    },
+    {
+      path: "/playVideo",
+      element: (
+        <Suspense fallback={"Loading..."}>
+          <PlayVideo />
+        </Suspense>
+      ),
     },
   ]);
   return (

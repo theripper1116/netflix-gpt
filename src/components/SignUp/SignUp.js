@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { lazy, useState } from "react";
 
-import { DEVICES_IMAGE, NETFLIX_LOGO } from "../../utils/Constants/imageURL";
+import { DEVICES_IMAGE, NETFLIX_LOGO } from "../../utils/constants/imageURL";
 const SetPasswordScreen = lazy(() => import("./SetPasswordScreen"));
 
 const SignUp = () => {

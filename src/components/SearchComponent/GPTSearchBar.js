@@ -6,7 +6,7 @@ import {
   addSearchedMoviesFromTMDB,
   clearSearchedData,
 } from "../../utils/store/storeSlice/gptSlice";
-import { TMDB_MOVIE_SEARCH_URL } from "../../utils/Constants/apiURL";
+import { TMDB_MOVIE_SEARCH_URL } from "../../utils/constants/apiURL";
 import { API_OPTIONS } from "../../utils/optionsForApi/optionsForAPI";
 import GPTSearchPage from "./GPTSearchPage";
 

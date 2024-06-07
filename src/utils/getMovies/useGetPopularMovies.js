@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { API_OPTIONS } from "../optionsForApi/optionsForAPI";
 import { addPopularMovies } from "../store/storeSlice/MoviesSlice";
-import { TMDB_POPULAR_MOVIES_URL } from "../../utils/Constants/apiURL";
+import { TMDB_POPULAR_MOVIES_URL } from "../constants/apiURL";
 
 export const useGetPopularMovies = () => {
   const dispatch = useDispatch();

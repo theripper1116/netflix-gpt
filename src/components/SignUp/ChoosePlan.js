@@ -4,7 +4,7 @@ import { lazy, useState } from "react";
 import {
   NETFLIX_LOGO,
   TICK_PHOTO_FOR_PLAN_CHOOSING,
-} from "../../utils/Constants/imageURL";
+} from "../../utils/constants/imageURL";
 const PlanList = lazy(() => import("./PlanList"));
 
 const ChoosePlan = () => {

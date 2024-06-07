@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../optionsForApi/optionsForAPI";
 import { addPlaybackVideo } from "../store/storeSlice/MoviesSlice";
 import { useEffect } from "react";
-import { TMDB_API_FOR_PLAYBACK_VIDEO } from "../../utils/Constants/apiURL";
+import { TMDB_API_FOR_PLAYBACK_VIDEO } from "../../utils/constants/apiURL";
 
 const useGetNowPlayingMoviesTrailer = (movieId) => {
   const dispatch = useDispatch();

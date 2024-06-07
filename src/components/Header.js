@@ -4,7 +4,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 
 import { removeUser } from "../utils/store/storeSlice/UserSlice";
-import { NETFLIX_LOGO } from "../utils/Constants/imageURL";
+import { NETFLIX_LOGO } from "../utils/constants/imageURL";
 import { removeAllMovies } from "../utils/store/storeSlice/MoviesSlice";
 
 const Header = () => {
