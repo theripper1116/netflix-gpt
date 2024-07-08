@@ -2,7 +2,7 @@ import React from "react";
 import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 
-import trailerListInterface from "../../utils/InterfaceForTS/trailerListInterface";
+import trailerListInterface from "../../utils/InterfaceForTS/trailerListInterface.ts";
 import useGetNowplayingMovieTrailer from "../../utils/getMovies/useGetNowPlayingMovieTrailer";
 import { useParams } from "react-router-dom";
 import { YOUTUBE_URL } from "../../utils/constants/videoURL.ts";
